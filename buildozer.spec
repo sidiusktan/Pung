@@ -7,10 +7,9 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,gif,ogg,wav,mp3,ico,ttf
 source.exclude_dirs = bin,.buildozer,build,.git,.github,__pycache__,assets/system/icon.ico
 
-version = 1.0
+version = 1.1
 
-# Фиксируем версии, иначе buildozer тянет Python 3.14 и pygame не собирается
-requirements = python3==3.11.15,hostpython3==3.11.15,pygame-ce==2.5.5,pillow
+requirements = python3==3.11.15,pygame-ce,pillow
 
 orientation = landscape
 fullscreen = 1
@@ -24,6 +23,7 @@ android.accept_sdk_license = True
 android.archs = arm64-v8a
 
 p4a.bootstrap = sdl2
+p4a.branch = develop
 p4a.local_recipes = .
 
 icon.filename = %(source.dir)s/assets/system/icon.png
