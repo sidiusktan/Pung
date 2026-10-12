@@ -1,6 +1,6 @@
 from os.path import join
 from pythonforandroid.recipe import CompiledComponentsPythonRecipe
-from pythonforandroid.toolchain import current_directory, shprint
+from pythonforandroid.toolchain import current_directory
 
 
 class PygameCERecipe(CompiledComponentsPythonRecipe):
@@ -15,14 +15,6 @@ class PygameCERecipe(CompiledComponentsPythonRecipe):
 
     def prebuild_arch(self, arch):
         super().prebuild_arch(arch)
-
-        # Ставим cython в hostpython (иначе setup.py pygame-ce падает)
-        try:
-            shprint(self.ctx.hostpython, '-m', 'pip', 'install',
-                    'cython', '--upgrade', '--break-system-packages')
-        except Exception as e:
-            print("Warning: не удалось поставить cython в hostpython:", e)
-
         with current_directory(self.get_build_dir(arch.arch)):
             setup_template = open(join("buildconfig",
                                        "Setup.Android.SDL2.in")).read()
