@@ -7,9 +7,9 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,gif,ogg,wav,mp3,ico,ttf
 source.exclude_dirs = bin,.buildozer,build,.git,.github,__pycache__,assets/system/icon.ico
 
-version = 1.2
+version = 1.3
 
-requirements = python3,pygame-ce,pillow
+requirements = python3,cython,pygame-ce,pillow
 
 orientation = landscape
 fullscreen = 1
