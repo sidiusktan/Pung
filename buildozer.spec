@@ -7,10 +7,10 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,gif,ogg,wav,mp3,ico,ttf
 source.exclude_dirs = bin,.buildozer,build,.git,.github,__pycache__,assets/system/icon.ico
 
-version = 1.4
+version = 1.5
 
-# Жёстко фиксируем Python 3.11.15 и Cython 3.0.11
-requirements = python3==3.11.15,hostpython3==3.11.15,cython==3.0.11,pygame-ce,pillow
+# Фиксируем проверенные версии: Python 3.11 и Cython < 3.0
+requirements = python3==3.11.15,hostpython3==3.11.15,cython==0.29.36,pygame-ce,pillow
 
 orientation = landscape
 fullscreen = 1
