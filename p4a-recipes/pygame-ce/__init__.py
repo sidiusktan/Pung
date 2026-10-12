@@ -1,9 +1,9 @@
 from os.path import join
-from pythonforandroid.recipe import CompiledComponentsPythonRecipe
+from pythonforandroid.recipe import CythonRecipe
 from pythonforandroid.toolchain import current_directory
 
 
-class PygameCERecipe(CompiledComponentsPythonRecipe):
+class PygameCERecipe(CythonRecipe):
     site_packages_name = 'pygame-ce'
     name = 'pygame-ce'
     version = '2.5.5'
@@ -11,7 +11,8 @@ class PygameCERecipe(CompiledComponentsPythonRecipe):
     depends = ['sdl2', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'setuptools',
                'jpeg', 'png']
     call_hostpython_via_targetpython = False
-    install_in_hostpython = False
+    # Ключевое изменение: устанавливаем Cython в хостовый Python
+    install_in_hostpython = True
 
     def prebuild_arch(self, arch):
         super().prebuild_arch(arch)
