@@ -9,7 +9,8 @@ source.exclude_dirs = bin,.buildozer,build,.git,.github,__pycache__,assets/syste
 
 version = 1.0
 
-requirements = python3,pygame,pillow
+# Фиксируем версии, иначе buildozer тянет Python 3.14 и pygame не собирается
+requirements = python3==3.11.15,hostpython3==3.11.15,pygame-ce==2.5.5,pillow
 
 orientation = landscape
 fullscreen = 1
@@ -20,9 +21,10 @@ android.api = 34
 android.minapi = 24
 android.ndk = 25b
 android.accept_sdk_license = True
-android.archs = arm64-v8a,armeabi-v7a
+android.archs = arm64-v8a
 
 p4a.bootstrap = sdl2
+p4a.local_recipes = .
 
 icon.filename = %(source.dir)s/assets/system/icon.png
 
