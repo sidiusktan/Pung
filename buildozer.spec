@@ -24,7 +24,7 @@ android.archs = arm64-v8a
 
 p4a.bootstrap = sdl2
 p4a.branch = develop
-p4a.local_recipes = .
+p4a.local_recipes = ./p4a-recipes
 
 icon.filename = %(source.dir)s/assets/system/icon.png
 
