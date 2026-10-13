@@ -11,8 +11,9 @@ class PygameCERecipe(CythonRecipe):
     depends = ['sdl2', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'setuptools',
                'jpeg', 'png']
     call_hostpython_via_targetpython = False
-    # Ключевое изменение: устанавливаем Cython в хостовый Python
-    install_in_hostpython = True
+    install_in_hostpython = False
+    # Ключевое изменение: заставляем p4a установить Cython в хостовый Python
+    hostpython_prerequisites = ["cython<3.0"]
 
     def prebuild_arch(self, arch):
         super().prebuild_arch(arch)
