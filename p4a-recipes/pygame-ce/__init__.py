@@ -1,9 +1,9 @@
 from os.path import join
-from pythonforandroid.recipe import CythonRecipe
-from pythonforandroid.toolchain import current_directory
+from pythonforandroid.recipe import CompiledComponentsPythonRecipe
+from pythonforandroid.toolchain import current_directory, shprint
 
 
-class PygameCERecipe(CythonRecipe):
+class PygameCERecipe(CompiledComponentsPythonRecipe):
     site_packages_name = 'pygame-ce'
     name = 'pygame-ce'
     version = '2.5.5'
@@ -12,11 +12,14 @@ class PygameCERecipe(CythonRecipe):
                'jpeg', 'png']
     call_hostpython_via_targetpython = False
     install_in_hostpython = False
-    # Ключевое изменение: заставляем p4a установить Cython в хостовый Python
-    hostpython_prerequisites = ["cython<3.0"]
 
     def prebuild_arch(self, arch):
         super().prebuild_arch(arch)
+
+        # Явно устанавливаем Cython в хостовый Python
+        shprint(self.ctx.hostpython, '-m', 'pip', 'install',
+                'cython==0.29.36', '--upgrade', '--break-system-packages')
+
         with current_directory(self.get_build_dir(arch.arch)):
             setup_template = open(join("buildconfig",
                                        "Setup.Android.SDL2.in")).read()
