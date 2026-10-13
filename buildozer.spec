@@ -7,7 +7,7 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,gif,ogg,wav,mp3,ico,ttf
 source.exclude_dirs = bin,.buildozer,build,.git,.github,__pycache__,assets/system/icon.ico
 
-version = 1.6
+version = 1.7
 
 # Фиксируем версии Python и Cython
 requirements = python3==3.11.15,hostpython3==3.11.15,cython==0.29.36,pygame-ce,pillow
